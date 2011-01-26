@@ -1,0 +1,31 @@
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-01-26 11:31:05
+project --topLevelPackage com.dw.roo.conference --projectName conference --java 6
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-01-26 11:31:07
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-01-26 11:32:09
+hint
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-01-26 11:37:41
+hint
+persistence setup --provider HIBERNATE --database HYPERSONIC_IN_MEMORY 
+hint
+hint
+entity --class ~.domain.Speaker --testAutomatically
+entity --class ~.domain.Talk --testAutomatically 
+hint
+field string --fieldName firstname --class ~.domain.Speaker --notNull 
+field string --fieldName lastname --class ~.domain.Speaker --notNull 
+field string --fieldName email --class ~.domain.Speaker --notNull --unique 
+field string --fieldName organization  
+field date --fieldName birthday --type java.util.Date --past --notNull 
+field number --type java.lang.Long --fieldName age --min 25 --max 60 
+field string --fieldName title --class ~.domain.Talk --notNull 
+field string --fieldName description --notNull --sizeMax 4000
+field set --fieldName talks --type ~.domain.Talk --class ~.domain.Speaker --cardinality ONE_TO_MANY 
+field reference --fieldName speaker --type ~.domain.Speaker --class ~.domain.Speaker --notNull 
+field reference --fieldName speaker --type ~.domain.Speaker --class ~.domain.Talk --notNull 
+// [failed] controller all --package ~.web
+controller all --package ~.web
+logging setup --level INFO --package ALL_SPRING 
+perform tests
+q
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-01-26 12:20:12
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-01-26 12:53:19
